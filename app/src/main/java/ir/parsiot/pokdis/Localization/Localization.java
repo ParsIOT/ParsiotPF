@@ -345,6 +345,7 @@ public class Localization implements MotionDnaInterface, ParticleFilterRunner.Pa
         public void onBeaconDetection(final ArrayList<BLEdevice> sortedDiscoveredDevices) {
             try {
                 _mutex.lock();
+                Log.e("Beacons",sortedDiscoveredDevices.toString());
 
 //                HashMap<String, Double> measurements = new HashMap<>();
                 ArrayList<BLEdevice> importantNearBeacons = new ArrayList<>();
@@ -369,7 +370,7 @@ public class Localization implements MotionDnaInterface, ParticleFilterRunner.Pa
                 if (pfFilter != null && importantNearBeacons.size()>0){
 //                    pfFilter.onSensedLandmarkData(measurements);
                     int relocationByProximityCnt = pfFilter.getRelocationByProximityCnt();
-                    if ( relocationByProximityCnt < 5){
+                    if ( relocationByProximityCnt < Constants.MAX_INIT_BEACON_RELOCATION){
                         pfFilter.onSensedLandmarkProxmity(importantNearBeacons);
                         relocationByProximityCnt++;
                         pfFilter.setRelocationByProximityCnt(relocationByProximityCnt);
@@ -526,24 +527,32 @@ public class Localization implements MotionDnaInterface, ParticleFilterRunner.Pa
 
     public void drawObstacleWalls(){
         MapConsts mapConsts = new MapConsts();
-        for(RectObstacle rectObstacle: mapConsts.rectObstacles){
-            ArrayList<ArrayList<String>> walls = new ArrayList<ArrayList<String>>();
-            for (Double[][] wall : rectObstacle.getWalls()){
-                String dot1 = String.format("%.2f,%.2f", wall[0][1], wall[0][0]);
-                String dot2 = String.format("%.2f,%.2f", wall[1][1], wall[1][0]);
-                Log.d("Obstacle1:",dot1 +" "+dot2);
-                locationUpdateCallback.drawConstLine(dot1, dot2);
-            }
-        }
+//        for(RectObstacle rectObstacle: mapConsts.rectObstacles){
+//            ArrayList<ArrayList<String>> walls = new ArrayList<ArrayList<String>>();
+//            for (Double[][] wall : rectObstacle.getWalls()){
+//                String dot1 = String.format("%.2f,%.2f", wall[0][1], wall[0][0]);
+//                String dot2 = String.format("%.2f,%.2f", wall[1][1], wall[1][0]);
+//                Log.d("Obstacle1:",dot1 +" "+dot2);
+//                locationUpdateCallback.drawConstLine(dot1, dot2);
+//            }
+//        }
+//
+//
+//        ArrayList<ArrayList<String>> walls = new ArrayList<ArrayList<String>>();
+//        for (Double[][] wall : mapConsts.mapBorderRect.getWalls()){
+//            String dot1 = String.format("%.2f,%.2f", wall[0][1], wall[0][0]);
+//            String dot2 = String.format("%.2f,%.2f", wall[1][1], wall[1][0]);
+//            Log.d("Obstacle1:",dot1 +" "+dot2);
+//            locationUpdateCallback.drawConstLine(dot1, dot2);
+//        }
 
-
-        ArrayList<ArrayList<String>> walls = new ArrayList<ArrayList<String>>();
-        for (Double[][] wall : mapConsts.mapBorderRect.getWalls()){
+        for (Double[][] wall : mapConsts.allWalls){
             String dot1 = String.format("%.2f,%.2f", wall[0][1], wall[0][0]);
             String dot2 = String.format("%.2f,%.2f", wall[1][1], wall[1][0]);
             Log.d("Obstacle1:",dot1 +" "+dot2);
             locationUpdateCallback.drawConstLine(dot1, dot2);
         }
+
 
     }
 

@@ -320,7 +320,9 @@ public class MainActivity extends AppCompatActivity implements WebViewManager.Lo
         MapDetail mapDetail = new MapDetail();
         mapDetail.setMapName("map");
 //        mapDetail.setMapPath("map.png");
-        mapDetail.setMapPath("map1.png");
+//        mapDetail.setMapPath("map1.png");
+        mapDetail.setMapPath("parsiot_map.png");
+
         List<Integer> dimensions = new ArrayList<Integer>();
 //        dimensions.add(1206);
 //        dimensions.add(1151);

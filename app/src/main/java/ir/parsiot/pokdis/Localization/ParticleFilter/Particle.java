@@ -10,8 +10,6 @@ import java.util.Random;
 import ir.parsiot.pokdis.Localization.Beacon.BLEdevice;
 import ir.parsiot.pokdis.map.MapConsts;
 
-import static ir.parsiot.pokdis.Constants.Constants.PROXIMITY_DISTANCE;
-import static ir.parsiot.pokdis.Constants.Constants.PROXIMITY_PARTICLE_FACTOR;
 import static ir.parsiot.pokdis.Localization.MotionDna.Utils.Convert2zeroto360;
 
 public class Particle {

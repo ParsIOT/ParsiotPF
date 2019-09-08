@@ -466,9 +466,9 @@ public class ParticleFilter {
         }
 
         double diffWeightRation = 0.3;
-        if ((clusterSumWeightRatio > (1 - diffWeightRation) || (1 + diffWeightRation) > clusterSumWeightRatio) && clusterCentersDist > MIN_CLUSTER_CENTER_DIST) {
-            instantRelocateByBeacon = true;
-        }
+//        if ((clusterSumWeightRatio > (1 - diffWeightRation) || (1 + diffWeightRation) > clusterSumWeightRatio) && clusterCentersDist > MIN_CLUSTER_CENTER_DIST) {
+//            instantRelocateByBeacon = true;
+//        }
         clusterCenters = new Double[][]{
                 cluster1Center,
                 cluster2Center,

@@ -8,11 +8,11 @@ public class Constants {
 
 
     public static final int MAX_RSSI_LIST_SIZE = 6;
-    public static final int MIN_VALID_PROXIMITY_RSS = -80;
+    public static final int MIN_VALID_PROXIMITY_RSS = -70;
     public static final double PROXIMITY_DISTANCE = 1.0;
     public static final double PROXIMITY_PARTICLE_FACTOR = 100.0;
 
-
+    public static final int MAX_INIT_BEACON_RELOCATION = 5;
 
     public static final double MIN_CLUSTER_CENTER_DIST = 170.0;
 //    public static final int MIN_VALID_PROXIMITY_RSS = -69;
